@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvorc4o3veqef"]
+[gd_scene load_steps=11 format=3 uid="uid://cvorc4o3veqef"]
 
 [ext_resource type="Texture2D" uid="uid://t3siijlp54vu" path="res://art/sprites/objects/objects.png" id="1_1ctuy"]
 [ext_resource type="Texture2D" uid="uid://bmbi6ixnutxqf" path="res://art/sprites/tilesets/plains.png" id="2_quy31"]
 [ext_resource type="Texture2D" uid="uid://cpkpc4cgwwpv2" path="res://art/sprites/tilesets/grass.png" id="3_ib34y"]
 [ext_resource type="PackedScene" uid="uid://cr2ciuveh8wnd" path="res://scenes/character_body_2d.tscn" id="4_2ydkg"]
+[ext_resource type="Script" path="res://scenes/TileMap.gd" id="4_axlsx"]
 [ext_resource type="PackedScene" uid="uid://b27334xj2ltdr" path="res://enemy.tscn" id="5_vmiib"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nctvy"]
@@ -223,6 +224,7 @@ layer_2/y_sort_enabled = true
 layer_2/y_sort_origin = 0
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(-589829, 0, 5, -589835, 0, 5, -65547, 0, 5, -720893, 0, 5, -65538, 0, 5, -8, 655360, 7, -589825, 655360, 7, -589832, 655360, 7, -589819, 655360, 7, -65531, 655360, 7, -131081, 0, 1, -6, 0, 1, -458757, 0, 1, -655359, 0, 1, -524285, 655360, 0, -524282, 0, 0, -524287, 327680, 0, -589827, 393216, 7, -1, 393216, 7)
+script = ExtResource("4_axlsx")
 
 [node name="CharacterBody2D" parent="TileMap" instance=ExtResource("4_2ydkg")]
 z_index = 1

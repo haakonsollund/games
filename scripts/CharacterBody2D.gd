@@ -1,6 +1,14 @@
 
 extends CharacterBody2D
 
+var Correct_sound = preload("res://art/sprites/tilesets/Badadan.wav")
+
+func _process(delta: float) -> void:
+	if !$AudioStreamPlayer2D.is_playing():
+		$AudioStreamPlayer2D.stream = Correct_sound
+		$AudioStreamPlayer2D.play()
+
+
 const speed = 100
 var current_dir = "none"
 
