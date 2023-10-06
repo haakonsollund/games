@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cr2ciuveh8wnd"]
+[gd_scene load_steps=45 format=3 uid="uid://cr2ciuveh8wnd"]
 
 [ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="1_110bq"]
 [ext_resource type="Texture2D" uid="uid://viq7whvgyw42" path="res://art/sprites/characters/player.png" id="2_iajyy"]
@@ -317,6 +317,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_akw37"]
 radius = 3.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ma8ea"]
+radius = 14.0357
+
 [node name="player" type="CharacterBody2D"]
 collision_layer = 3
 script = ExtResource("1_110bq")
@@ -329,11 +332,20 @@ centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_as_relative = false
-position = Vector2(0, -2)
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_akw37")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="player_hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+position = Vector2(1, -8)
+shape = SubResource("CircleShape2D_ma8ea")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

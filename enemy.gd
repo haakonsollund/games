@@ -27,3 +27,7 @@ func _on_area_2d_body_exited(body):
 	player = null
 	player_chase = false
 	$AnimatedSprite2D.play("idle")
+	
+
+func enemy():
+	pass
