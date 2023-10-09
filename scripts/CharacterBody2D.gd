@@ -6,6 +6,11 @@ var enemy_attack_cooldown = true
 var health = 100
 var player_alive = true
 
+var attack_ip = false
+
+
+
+
 var Correct_sound = preload("res://art/sprites/tilesets/Badadan.wav")
 
 func _process(delta: float) -> void:
@@ -67,28 +72,32 @@ func play_anim(movement):
 		if movement == 1:
 			anim.play("side_walk")
 		elif movement == 0:
-			anim.play("side_idle")
+			if attack_ip == false:
+				anim.play("side_idle")
 			
 	if dir == "left":
 		anim.flip_h = true
 		if movement == 1:
 			anim.play("side_walk")
 		elif movement == 0:
-			anim.play("side_idle")
+			if attack_ip == false:
+				anim.play("side_idle")
 			
 	if dir == "down":
 		anim.flip_h = true
 		if movement == 1:
 			anim.play("front_walk")
 		elif movement == 0:
-			anim.play("front_idle")
+			if attack_ip == false:
+				anim.play("front_idle")
 			
 	if dir == "up":
 		anim.flip_h = true
 		if movement == 1:
 			anim.play("back_walk")
 		elif movement == 0:
-			anim.play("back_idle")
+			if attack_ip == false:
+				anim.play("back_idle")
 
 func player():
 	pass
@@ -108,7 +117,7 @@ func _on_player_hitbox_body_exited(body):
 func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:
 		health = health - 20
-		enemy_attack_cooldown
+		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 		print(health)
 

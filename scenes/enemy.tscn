@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://b27334xj2ltdr"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_h7hww"]
 [ext_resource type="Texture2D" uid="uid://bjs4kxkrcypsj" path="res://art/sprites/characters/slime.png" id="1_hohoh"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_y5ekp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ixp8"]
 atlas = ExtResource("1_hohoh")
@@ -136,7 +136,7 @@ radius = 4.0
 radius = 12.0
 
 [node name="enemy" type="CharacterBody2D"]
-script = ExtResource("1_h7hww")
+script = ExtResource("1_y5ekp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nafus")
