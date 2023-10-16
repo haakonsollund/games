@@ -124,3 +124,34 @@ func enemy_attack():
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
+
+
+func attack():
+	var dir = current_dir
+	
+	if Input.is_action_just_pressed("e"):
+		global.player_current_attack = true
+		attack_ip = true
+		if dir == "right":
+			$AnimatedSprite2D.flip_h = false
+			$AnimatedSprite2D.play("side_attack")
+			$deal_attack_timer.start()
+		if dir == "left":
+			$AnimatedSprite2D.flip_h = true
+			$AnimatedSprite2D.play("side_attack")
+			$deal_attack_timer.start()
+		if dir == "down":
+			$AnimatedSprite2D.flip_h = false
+			$AnimatedSprite2D.play("front_attack")
+			$deal_attack_timer.start()
+		if dir == "up":
+			$AnimatedSprite2D.flip_h = false
+			$AnimatedSprite2D.play("front_attack")
+			$deal_attack_timer.start()
+		
+
+func _on_deal_attack_timer_timeout():
+	$deal_attack_timer.stop()
+	global.player_current_attack = false
+	attack_ip = false
+	
